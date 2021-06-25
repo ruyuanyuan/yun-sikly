@@ -1,10 +1,12 @@
 {
-  "name": "yunui",
+  "name": "yun-silky",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "lib/silky.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build-lib": "vue-cli-service build --target lib --name silky --dest lib packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -16,5 +18,10 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
