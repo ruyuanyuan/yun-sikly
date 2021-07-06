@@ -1,5 +1,5 @@
 <template>
-  <div class='yun-tab' :class='"yun-tab-"+model'>
+  <div class='yun-tab' :class='["yun-tab-"+model,$attrs.class]'>
     <div class='yun-tab-nav'>
       <div class='yun-tab-nav-item' 
         v-for='(item) in navList'
@@ -45,7 +45,6 @@
       getNavList() {
         this.navList = []
         if (this.$slots.default) {
-          console.log(this.$slots.default)
           this.$slots.default.forEach(item => {
             let navObj = {
               label: item.componentInstance.label,

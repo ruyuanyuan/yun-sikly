@@ -1,5 +1,5 @@
 <template>
-    <div class='yun-tab-plan' v-if='active'>
+    <div class='yun-tab-plan' :class='$attrs.class' v-if='active'>
       <slot></slot>
     </div>
 </template>
