@@ -104,7 +104,11 @@
       </yun-tab-plan>
        <yun-tab-plan label='Galaxy' tab='galaxy' class="yun-bg">
          <yun-galaxy :stars='starList' itemW='60' itemH='60'>
-          <div class='galaxy-center' slot="center">中心点</div>
+          <div class='galaxy-center' slot="center">中心点1</div>
+          <div class='galaxy-disc' slot="disc"></div>
+         </yun-galaxy>
+        <yun-galaxy :stars='starList2' itemW='60' itemH='60'>
+          <div class='galaxy-center' slot="center">中心点2</div>
           <div class='galaxy-disc' slot="disc"></div>
          </yun-galaxy>
       </yun-tab-plan>
@@ -118,7 +122,8 @@ export default {
   data () {
     return {
       activeTab:'button',
-      starList:[1,2,3,4,5]
+      starList:[1,2,3,4,5],
+      starList2:[1,2,3]
     }
   },
   methods: {
@@ -171,7 +176,7 @@ export default {
     color:#fff;
     border:2px solid rgb(7, 177, 245);
     border-radius: 50%;
-    
+    cursor: pointer;
   }
   .galaxy-disc{
     width:300px;

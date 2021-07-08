@@ -1,5 +1,5 @@
 <template>
-  <div class="yun-galaxy" :style="`width:${width}px;height:${height}px;`">
+  <div class="yun-galaxy" :class='$attrs.class' :style="`width:${width}px;height:${height}px;`">
     <div class="yun-galaxy-conent">
       <div class="yun-galaxy-center">
         <slot name="center"></slot>
@@ -7,13 +7,17 @@
       <div class="yun-galaxy-disc">
         <slot name="disc"></slot>
       </div>
-      <ul class="yun-galaxy-track" :style="`width:${itemW}px;height:${itemH}px;`">
+      <ul class="yun-galaxy-track" ref="starsSet" :style="`width:${itemW}px;height:${itemH}px;`">
         <li
           class="yun-galaxy-star"
           :style="`width:${itemW}px;height:${itemH}px;`"
           v-for="(star, index) in stars"
           :key="index"
-        ></li>
+        >
+        <a :href="star.url?star.url:'javascript:;'">
+          <img v-if='star.img' :src="star.img" alt="">
+        </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -48,6 +52,24 @@ export default {
   data() {
     return {};
   },
+  created(){
+    this.$nextTick(()=>{
+      let stars = this.$refs.starsSet.getElementsByClassName('yun-galaxy-star');
+      let starLen = this.stars.length;
+      let degUnit = 360/starLen;
+      [...stars].forEach((dom,index)=>{
+        dom.style.transform = `rotateY(${degUnit*(index+1)}deg) translateZ(150px)`
+        let doma = dom.getElementsByTagName("a")[0];
+        doma.animate([
+            { transform: `rotateY(-${degUnit*(index+1)}deg) `}, 
+            { transform: `rotateY(-${degUnit*(index+1)+360}deg) ` }
+        ], { 
+            duration: 12000,
+            iterations: Infinity
+        });
+      })
+    })
+  },
   methods: {},
 };
 </script>
@@ -78,30 +100,24 @@ export default {
     right:0;
     bottom:0;
     margin:auto;
-    border:1px solid red;
-    // background: red;
     transform-origin:center center;
     transform-style: preserve-3d;
+    transform: rotateX(45deg);
     animation: play 12s linear 0s infinite normal;
     .yun-galaxy-star{
       position: absolute;
       top:0;
       left:0;
-      border:1px solid greenyellow;
-      &:nth-child(1) {
-        transform: rotateY(72deg) translateZ(150px) translateY(0);
-      }
-      &:nth-child(2) {
-        transform: rotateY(144deg) translateZ(150px) translateY(0);
-      }
-      &:nth-child(3) {
-        transform: rotateY(216deg) translateZ(150px) translateY(0);
-      }
-      &:nth-child(4) {
-        transform: rotateY(288deg) translateZ(150px) translateY(0);
-      }
-      &:nth-child(5) {
-        transform: rotateY(360deg) translateZ(150px) translateY(0);
+      // transform-origin:center center;
+      transform-style: preserve-3d;
+      a{
+        display: block;
+        position: absolute;
+        width:100%;
+        height:100%;
+        border:1px solid greenyellow;
+        transform-origin:center center;
+        transform-style: preserve-3d;
       }
     }
     
