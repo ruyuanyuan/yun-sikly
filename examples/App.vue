@@ -3,6 +3,7 @@
     <yun-tab v-model="activeTab" @tab-click='tabchange' model='vline'>
       <yun-tab-plan label='Button' tab='button'>
         <yun-button>按钮</yun-button>
+          <yun-button type='colorliner' animate='border' :colors='["#409EFF","#67C23A"]' direction='top' fontColor='#fff' >按钮</yun-button>
       </yun-tab-plan>
       <yun-tab-plan label='Color' tab='color'>
         <yun-color></yun-color>
@@ -22,34 +23,34 @@
         </yun-menu>
       </yun-tab-plan>
       <yun-tab-plan label='Animation' tab='animation' class='yun-animation-list'>
-        <yun-animation class='yun-ani' name='yun-shake' event='hover' count='infinite' duration='1'>
+        <yun-animation class='yun-ani' name='shake' event='hover' count='infinite' duration='1'>
           <div class='yun-block'></div>
         </yun-animation>
-        <yun-animation class='yun-ani' name='yun-shake-inline' event='hover' count='infinite' duration='1'>
+        <yun-animation class='yun-ani' name='shake-inline' event='hover' count='infinite' duration='1'>
           <div class='yun-block'></div>
         </yun-animation>
-        <yun-animation class='yun-ani' name='yun-shake-vline' event='hover' count='infinite' duration='1'>
+        <yun-animation class='yun-ani' name='shake-vline' event='hover' count='infinite' duration='1'>
           <div class='yun-block'></div>
         </yun-animation>
-        <yun-animation class='yun-ani' name='yun-light' event='hover' count='infinite' duration='0.8'>
+        <yun-animation class='yun-ani' name='light' event='hover' count='infinite' duration='0.8'>
           <div class='yun-block'></div>
         </yun-animation>
-         <yun-animation class='yun-ani' name='yun-jump' event='hover' count='infinite' duration='0.4'>
+         <yun-animation class='yun-ani' name='jump' event='hover' count='infinite' duration='0.4'>
           <div class='yun-block'></div>
         </yun-animation>
-         <yun-animation class='yun-ani' name='yun-stretch' event='hover' count='1' duration='0.4'>
+         <yun-animation class='yun-ani' name='stretch' event='hover' count='1' duration='0.4'>
           <div class='yun-block'></div>
         </yun-animation>
-        <yun-animation class='yun-ani' name='yun-hert' event='hover' count='infinite' duration='0.4'>
+        <yun-animation class='yun-ani' name='hert' event='hover' count='infinite' duration='0.4'>
           <div class='yun-block'></div>
         </yun-animation>
-        <yun-animation class='yun-ani' name='yun-pulse' event='hover' count='1' duration='0.4'>
+        <yun-animation class='yun-ani' name='pulse' event='hover' count='1' duration='0.4'>
           <div class='yun-block'></div>
         </yun-animation>
-        <yun-animation class='yun-ani' name='yun-twinkle' event='hover' count='infinite' duration='1'>
+        <yun-animation class='yun-ani' name='twinkle' event='hover' count='infinite' duration='1'>
           <div class='yun-block'></div>
         </yun-animation>
-        <yun-animation class='yun-ani' name='yun-swing' event='hover' count='infinite' duration='0.4'>
+        <yun-animation class='yun-ani' name='swing' event='hover' count='infinite' duration='0.4'>
           <div class='yun-block'></div>
         </yun-animation>
       </yun-tab-plan>
@@ -103,13 +104,13 @@
        </yun-scroll>
       </yun-tab-plan>
        <yun-tab-plan label='Galaxy' tab='galaxy' class="yun-bg">
-         <yun-galaxy :stars='starList' itemW='60' itemH='60'>
-          <div class='galaxy-center' slot="center">中心点1</div>
-          <div class='galaxy-disc' slot="disc"></div>
-         </yun-galaxy>
-        <yun-galaxy :stars='starList2' itemW='60' itemH='60'>
-          <div class='galaxy-center' slot="center">中心点2</div>
-          <div class='galaxy-disc' slot="disc"></div>
+        <yun-galaxy :stars='starList' itemW='45' itemH='55'>
+          <div class='galaxy-center' slot="center">
+            <img src="./img/center1.png" alt="">
+          </div>
+          <div class='galaxy-disc' slot="disc">
+            <img src="./img/run-pan.png" alt="">
+          </div>
          </yun-galaxy>
       </yun-tab-plan>
     </yun-tab>
@@ -122,8 +123,23 @@ export default {
   data () {
     return {
       activeTab:'button',
-      starList:[1,2,3,4,5],
-      starList2:[1,2,3]
+      starList:[
+        {
+          img:require('./img/character1.png')
+        },
+        {
+          img:require('./img/character2.png')
+        },{
+          img:require('./img/character3.png')
+        },
+        {
+          img:require('./img/character4.png')
+        },
+        {
+          img:require('./img/character5.png')
+        }
+
+      ]
     }
   },
   methods: {
@@ -170,19 +186,25 @@ export default {
   .galaxy-center{
     width:80px;
     height:80px;
-    line-height: 80px;
-    text-align: center;
-    font-size:18px;
-    color:#fff;
-    border:2px solid rgb(7, 177, 245);
-    border-radius: 50%;
-    cursor: pointer;
+    img{
+      width:100%;
+    }
+    // line-height: 80px;
+    // text-align: center;
+    // font-size:18px;
+    // color:#fff;
+    // border:2px solid rgb(7, 177, 245);
+    // border-radius: 50%;
+    // cursor: pointer;
   }
   .galaxy-disc{
-    width:300px;
-    height:300px;
-    border:1px solid rgb(7, 177, 245);
-    border-radius: 50%;
+    width:450px;
+    height:100px;
+    img{
+      width:100%;
+    }
+    // border:1px solid rgb(7, 177, 245);
+    // border-radius: 50%;
   }
 .yun-li{
     line-height: 40px;

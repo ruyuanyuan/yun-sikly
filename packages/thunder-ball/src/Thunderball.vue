@@ -1,7 +1,7 @@
 <template>
   <div
     class="yun-thunder-ball"
-    :style="`width:${width}px;height:${height}px;`"
+    :style="`width:${width}px;height:${height}px;box-shadow: 0 0 20px ${shadowColor} inset;`"
   >
     <canvas ref="canvas" :width="width" :height="height"></canvas>
   </div>
@@ -26,7 +26,15 @@ export default {
         type:Number,
         default:100
     },
-    long:{
+    shadowColor:{
+        type:String,
+        default:'#1cf3f3'
+    },
+    linecolor:{
+      type:String,
+      default:'#1cf3f3'
+    },
+    lineHeight:{
       type:Number,
       default:1000
     },
@@ -34,8 +42,6 @@ export default {
       type:Number,
       default:2
     }
-    
-
   },
   mounted() {
     this.$nextTick(() => {
@@ -74,7 +80,7 @@ export default {
           y: y,
           xa: xa,
           ya: ya,
-          max: this.long,
+          max: this.lineHeight,
         });
       }
       // 延迟100秒开始执行动画，如果立即执行有时位置计算会出错
@@ -117,7 +123,7 @@ export default {
               // 画线
               ctx.beginPath();
               ctx.lineWidth = ratio / _this.lineWidth;
-              ctx.strokeStyle = "rgba(17,255,255," + (ratio + 0.1) + ")";
+              ctx.strokeStyle = "rgba("+_this.setcolor(_this.linecolor)+"," + (ratio + 0.1) + ")";
               ctx.moveTo(dot.x, dot.y);
               ctx.lineTo(d2.x, d2.y);
               ctx.stroke();
@@ -128,7 +134,30 @@ export default {
         });
         RAF(animate);
       }
-    }
+    },
+    setcolor(sColor){
+      
+      sColor = sColor.toLowerCase();
+      //十六进制颜色值的正则表达式
+      var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+      // 如果是16进制颜色
+      if (sColor && reg.test(sColor)) {
+          if (sColor.length === 4) {
+              var sColorNew = "#";
+              for (var i=1; i<4; i+=1) {
+                  sColorNew += sColor.slice(i, i+1).concat(sColor.slice(i, i+1));    
+              }
+              sColor = sColorNew;
+          }
+          //处理六位的颜色值
+          var sColorChange = [];
+          for (var i=1; i<7; i+=2) {
+              sColorChange.push(parseInt("0x"+sColor.slice(i, i+2)));    
+          }
+          return sColorChange.join(",");
+      }
+      return sColor;
+  }
   },
 };
 </script>
@@ -137,7 +166,6 @@ export default {
 .yun-thunder-ball {
   overflow: hidden;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(44, 253, 253, 0.884) inset;
-  position: absolute;
+  box-shadow: 0 0 20px rgba(44, 253, 253, 0.849) inset;
 }
 </style>

@@ -16,7 +16,10 @@
     v-if="type == 'color'"
     class='yun-button yun-button-color' 
     :class="`yun-animate-${animate}`"
-    :style='`background:${color};border:1px solid ${borderColor};color:${fontColor};border-radius:${radius}px`'>
+    :style='`background:${color};border:1px solid ${borderColor};color:${fontColor};border-radius:${radius}px`'
+    @mouseenter="btnMouseEvent"
+    @mouseleave="btnMouseEvent"
+    >
     <slot></slot>
     </div>
   </div>

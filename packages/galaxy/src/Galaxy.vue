@@ -1,7 +1,7 @@
 <template>
   <div class="yun-galaxy" :class='$attrs.class' :style="`width:${width}px;height:${height}px;`">
     <div class="yun-galaxy-conent">
-      <div class="yun-galaxy-center">
+      <div class="yun-galaxy-center" :style='`transform: translate(-50%, -50%) translateZ(${width/2}px);`'>
         <slot name="center"></slot>
       </div>
       <div class="yun-galaxy-disc">
@@ -34,7 +34,7 @@ export default {
     },
     width: {
       type: [Number, String],
-      default: 600,
+      default: 450,
     },
     height: {
       type: [Number, String],
@@ -58,7 +58,7 @@ export default {
       let starLen = this.stars.length;
       let degUnit = 360/starLen;
       [...stars].forEach((dom,index)=>{
-        dom.style.transform = `rotateY(${degUnit*(index+1)}deg) translateZ(150px)`
+        dom.style.transform = `rotateY(${degUnit*(index+1)}deg) translateZ(${(this.width-this.itemW)/2}px) translateY(${this.itemH}px)`
         let doma = dom.getElementsByTagName("a")[0];
         doma.animate([
             { transform: `rotateY(-${degUnit*(index+1)}deg) `}, 
@@ -83,14 +83,15 @@ export default {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translateZ(300px);
     transform-style: preserve-3d;
+    z-index: -1;
   }
   .yun-galaxy-disc {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate3d(-50%, -50%, -300px) rotateX(45deg);
+    transform: translate3d(-50%, -50%, -300px) rotateX(20deg);
     transform-style: preserve-3d;
   }
   .yun-galaxy-track {
@@ -100,9 +101,10 @@ export default {
     right:0;
     bottom:0;
     margin:auto;
+    z-index: 100;
     transform-origin:center center;
     transform-style: preserve-3d;
-    transform: rotateX(45deg);
+    transform: rotateX(0deg);
     animation: play 12s linear 0s infinite normal;
     .yun-galaxy-star{
       position: absolute;
@@ -115,9 +117,12 @@ export default {
         position: absolute;
         width:100%;
         height:100%;
-        border:1px solid greenyellow;
         transform-origin:center center;
         transform-style: preserve-3d;
+        img{
+           width:100%;
+           height:100%;
+        }
       }
     }
     
@@ -125,10 +130,10 @@ export default {
 }
 @keyframes play {
   from {
-    transform: rotateX(45deg) rotateY(0deg) translateZ(0);
+    transform: rotateX(20deg) rotateY(0deg) translateZ(0) ;
   }
   to {
-    transform: rotateX(45deg) rotateY(360deg) translateZ(0);
+    transform: rotateX(20deg) rotateY(360deg) translateZ(0);
   }
 }
 </style>

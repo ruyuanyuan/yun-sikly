@@ -34,7 +34,7 @@ export default {
     },
     color: {
       type: String,
-      default: "#aaa",
+      default: "#efefef",
     },
   },
   data() {

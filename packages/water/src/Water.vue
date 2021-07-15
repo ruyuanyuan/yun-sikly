@@ -1,11 +1,12 @@
 <template>
-  <div class="yun-water" :class='["yun-water-"+type,$attrs.class]' :style='`width:${width}px;height:${height}px; border-radius:${waterRadius}`'>
+  <div class="yun-water" :class='["yun-water-"+type,$attrs.class]' 
+  :style='`width:${width}px;height:${height}px; border-radius:${waterRadius};box-shadow: 0 0 8px ${shadowColor} inset;`'>
     <div class='yun-water-number'>
         <slot></slot>
     </div>
     <div class="yun-water-content" :style='`border-radius:${radius}`'>
-        <div class="yun-water-heavy" :style='`top:${90-number}%;`'></div>
-        <div class="yun-water-light" :style='`top:${100-number}%;`'></div>
+        <div class="yun-water-heavy" :style='`top:${90-number}%;background:${waterColor&&waterColor[0]}`'></div>
+        <div class="yun-water-light" :style='`top:${100-number}%;background:${waterColor&&waterColor[1]}`'></div>
     </div>
   </div>
 </template>
@@ -28,6 +29,16 @@ export default {
       radius:{
            type:[Number,String],
           default:'50%'
+      },
+      shadowColor:{
+        type:String,
+        default:'#0cffff'
+      },
+      waterColor:{
+        type:String,
+        default:()=>{
+          return ['#1cf3f3','#0cffffee']
+        }
       },
       type:{
           type:String,
@@ -60,7 +71,7 @@ export default {
 .yun-water {
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 8px #0cffff inset;
+  // box-shadow: 0 0 8px #0cffff inset;
   display: inline-block;
   margin-top:15px;
   &+*{

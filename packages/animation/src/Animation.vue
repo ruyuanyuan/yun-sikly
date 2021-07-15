@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     animationStyle: function () {
-      let animateStyle = `animation-name: ${this.name};animation-duration: ${this.duration}s;animation-delay: ${this.delay}s;animation-iteration-count: ${this.count};animation-timing-function: ${this.animationType};`;
+      let animateStyle = `animation-name: yun-${this.name};animation-duration: ${this.duration}s;animation-delay: ${this.delay}s;animation-iteration-count: ${this.count};animation-timing-function: ${this.animationType};`;
       return animateStyle;
     },
   },
