@@ -2,8 +2,13 @@
   <div id="app">
     <yun-tab v-model="activeTab" @tab-click='tabchange' model='vline'>
       <yun-tab-plan label='Button' tab='button'>
-        <yun-button>按钮</yun-button>
-          <yun-button type='colorliner' animate='border' :colors='["#409EFF","#67C23A"]' direction='top' fontColor='#fff' >按钮</yun-button>
+        <Ybutton></Ybutton>
+      </yun-tab-plan>
+      <yun-tab-plan label='border' tab='border'>
+        <Yborder></Yborder>
+      </yun-tab-plan>
+      <yun-tab-plan label='Text' tab='text' class='yun-bg'>
+        <Ytext></Ytext>
       </yun-tab-plan>
       <yun-tab-plan label='Color' tab='color'>
         <yun-color></yun-color>
@@ -22,104 +27,46 @@
           </yun-menu-group>
         </yun-menu>
       </yun-tab-plan>
+      <yun-tab-plan label='Scroll' tab='scroll'>
+       <Yscroll></Yscroll>
+      </yun-tab-plan>
       <yun-tab-plan label='Animation' tab='animation' class='yun-animation-list'>
-        <yun-animation class='yun-ani' name='shake' event='hover' count='infinite' duration='1'>
-          <div class='yun-block'></div>
-        </yun-animation>
-        <yun-animation class='yun-ani' name='shake-inline' event='hover' count='infinite' duration='1'>
-          <div class='yun-block'></div>
-        </yun-animation>
-        <yun-animation class='yun-ani' name='shake-vline' event='hover' count='infinite' duration='1'>
-          <div class='yun-block'></div>
-        </yun-animation>
-        <yun-animation class='yun-ani' name='light' event='hover' count='infinite' duration='0.8'>
-          <div class='yun-block'></div>
-        </yun-animation>
-         <yun-animation class='yun-ani' name='jump' event='hover' count='infinite' duration='0.4'>
-          <div class='yun-block'></div>
-        </yun-animation>
-         <yun-animation class='yun-ani' name='stretch' event='hover' count='1' duration='0.4'>
-          <div class='yun-block'></div>
-        </yun-animation>
-        <yun-animation class='yun-ani' name='hert' event='hover' count='infinite' duration='0.4'>
-          <div class='yun-block'></div>
-        </yun-animation>
-        <yun-animation class='yun-ani' name='pulse' event='hover' count='1' duration='0.4'>
-          <div class='yun-block'></div>
-        </yun-animation>
-        <yun-animation class='yun-ani' name='twinkle' event='hover' count='infinite' duration='1'>
-          <div class='yun-block'></div>
-        </yun-animation>
-        <yun-animation class='yun-ani' name='swing' event='hover' count='infinite' duration='0.4'>
-          <div class='yun-block'></div>
-        </yun-animation>
+        <Yanimation></Yanimation>
       </yun-tab-plan>
       <yun-tab-plan label='Thunderball' tab='thunder-ball'>
-        <yun-thunder-ball width='100' height='100' :count='40' :long='500' :speed='1'></yun-thunder-ball>
+        <Ythunderball></Ythunderball>
       </yun-tab-plan>
       <yun-tab-plan label='Water' tab='water'>
-        <yun-water width='100'  height='100' number='40' radius='30%'>
-          <span class='water-number'>30%</span>
-        </yun-water>
-        <yun-water width='100'  height='100' number='40' >
-          <span class='water-number'>30%</span>
-        </yun-water>
-        <yun-water width='100'  height='100' number='30' type='drop'>
-          <span class='water-number'>30%</span>
-        </yun-water>
-      </yun-tab-plan>
-      <yun-tab-plan label='border' tab='border'>
-        <yun-border class='yunborder' width='2' color='blue' type='dashed'>
-          <div class='yun-block yun-block-light'></div>
-        </yun-border>
-        <yun-border class='yunborder' width='2' name='outline' color='blue'>
-          <div class='yun-block yun-block-light'></div>
-        </yun-border>
-         <yun-border class='yunborder' width='0' name='horn' color='blue'>
-          <div class='yun-block yun-block-light'></div>
-        </yun-border>
-         <yun-border class='yunborder' width='0' name='light' color='blue'>
-          <div class='yun-block yun-block-light'></div>
-        </yun-border>
-        <yun-border class='yunborder' width='2' name='circle' color='blue' radius='50%'>
-          <div class='yun-block yun-block-light'></div>
-        </yun-border>
-      </yun-tab-plan>
-      <yun-tab-plan label='Text' tab='text' class='yun-bg'>
-        <yun-text class='yun-text-item' name='colour' size='24' >Are you ready?</yun-text>
-        <yun-text class='yun-text-item' name='light' size='24' >Are you ready?</yun-text>
-        <yun-text class='yun-text-item' name='animation-order'  size='24' >Are&nbsp; you &nbsp;ready?</yun-text>
-        <yun-text class='yun-text-item' name='animation-beat'  size='40' skew='0'>Are&nbsp; you &nbsp;ready?</yun-text>
-      </yun-tab-plan>
-      <yun-tab-plan label='Scroll' tab='scroll'>
-       <yun-scroll step='30' height='240' scrollId='myscrll1'>
-         <ul>
-            <li class='yun-li' v-for="i in 10" :key='i'>{{i}}</li>
-        </ul>
-       </yun-scroll>
-        <yun-scroll step='30' height='240' direction='inline'>
-         <ul class='inline'>
-            <li class='yun-li' v-for="i in 10" :key='i'>{{i}}</li>
-        </ul>
-       </yun-scroll>
+        <Ywater></Ywater>
       </yun-tab-plan>
        <yun-tab-plan label='Galaxy' tab='galaxy' class="yun-bg">
-        <yun-galaxy :stars='starList' itemW='45' itemH='55'>
-          <div class='galaxy-center' slot="center">
-            <img src="./img/center1.png" alt="">
-          </div>
-          <div class='galaxy-disc' slot="disc">
-            <img src="./img/run-pan.png" alt="">
-          </div>
-         </yun-galaxy>
+        <Ygalaxy></Ygalaxy>
       </yun-tab-plan>
     </yun-tab>
   </div>
 </template>
 
 <script>
+import Ybutton from './components/button.vue'
+import Yanimation from './components/animation.vue'
+import Yborder from './components/border.vue'
+import Ygalaxy from './components/galaxy.vue'
+import Yscroll from './components/scroll.vue'
+import Ytext from './components/text.vue'
+import Ythunderball from './components/thunderball.vue'
+import Ywater from './components/water.vue'
 export default {
   name: 'App',
+  components:{
+    Ybutton,
+    Yanimation,
+    Yborder,
+    Ygalaxy,
+    Yscroll,
+    Ytext,
+    Ythunderball,
+    Ywater
+  },
   data () {
     return {
       activeTab:'button',
@@ -151,74 +98,7 @@ export default {
 </script>
 
 <style lang="scss">
-.yun-bg{
-  background:#202076;
-}
-.yun-text-item{
-  margin:15px;
-}
-.yun-animation-list{
-  display: flex;
-  background: #000;
-  .yun-ani{
-    margin:15px;
-  }
-}
-.yunborder{
-  margin:15px;
-}
-  .yun-block{
-    width:80px;
-    height:80px;
-    border:1px solid #dfdfdf;
-    background: blueviolet;
-    cursor: pointer;
-    &.yun-block-light{
-    //   width:200px;
-    // height:200px;
-      background: rgb(207, 173, 238);
-    }
-  }
-  .water-number{
-    color:rgb(7, 177, 245);
-    font-size:20px;
-  }
-  .galaxy-center{
-    width:80px;
-    height:80px;
-    img{
-      width:100%;
-    }
-    // line-height: 80px;
-    // text-align: center;
-    // font-size:18px;
-    // color:#fff;
-    // border:2px solid rgb(7, 177, 245);
-    // border-radius: 50%;
-    // cursor: pointer;
-  }
-  .galaxy-disc{
-    width:450px;
-    height:100px;
-    img{
-      width:100%;
-    }
-    // border:1px solid rgb(7, 177, 245);
-    // border-radius: 50%;
-  }
-.yun-li{
-    line-height: 40px;
-    text-align: center;
-    border:1px solid #dfdfdf;
-}
-.inline{
-    display: flex;
-    .yun-li{
-        width:160px;
-        height:300px;
-        line-height: 300px;
-        text-align: center;
-        border:1px solid #dfdfdf;
-    }
+#app{
+   
 }
 </style>

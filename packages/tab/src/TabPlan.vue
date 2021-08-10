@@ -36,8 +36,9 @@ export default {
   .yun-tab-plan{
     width:100%;
     min-height: 300px;
+    max-height: 100vh;
+    overflow-y:auto;
     padding:10px;
-    border: 1px solid #efefdf;
     position: relative;
     top:-1px;
   }
