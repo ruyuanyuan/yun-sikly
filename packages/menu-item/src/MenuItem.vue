@@ -1,7 +1,7 @@
 <template>
     <div class='yun-menu-item' :style='`background:${menuColor}`'>
         <template v-if='route'>
-            <router-link :to='route'>
+            <router-link :to='path'>
                 <slot></slot>
             </router-link>
         </template>
@@ -15,7 +15,7 @@ export default {
     name:"yun-menu-item",
     inject: [ "route" ],
     props:{
-        route:{
+        path:{
             type:String,
             default:null
         },

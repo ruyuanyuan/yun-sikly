@@ -130,10 +130,10 @@ export default {
 }
 @keyframes play {
   from {
-    transform: rotateX(20deg) rotateY(0deg) translateZ(0) ;
+    transform: rotateX(20deg) rotateY(0deg) translateZ(0) translateY(-30px);
   }
   to {
-    transform: rotateX(20deg) rotateY(360deg) translateZ(0);
+    transform: rotateX(20deg) rotateY(360deg) translateZ(0) translateY(-30px);
   }
 }
 </style>

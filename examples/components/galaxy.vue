@@ -11,6 +11,54 @@
          </yun-galaxy>
   </div>
    <yun-code lang="vue" :code="code"> </yun-code>
+   <table class='yun-table' cellspacing='0' style='width:100%;'>
+    <thead>
+        <tr>
+          <th>属性</th>
+          <th>类型</th>
+          <th>默认值</th>
+          <th>可选值</th>
+          <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>width</td>
+          <td>String/Number</td>
+          <td>450</td>
+          <td>-</td>
+          <td>整体宽度</td>
+        </tr>
+        <tr>
+          <td>height</td>
+          <td>String/Number</td>
+          <td>500</td>
+          <td>-</td>
+          <td>整体高度</td>
+        </tr>
+        <tr>
+          <td>itemW</td>
+          <td>String/Number</td>
+          <td>50</td>
+          <td>-</td>
+          <td>宽度</td>
+        </tr>
+        <tr>
+          <td>itemH</td>
+          <td>String/Number</td>
+          <td>50</td>
+          <td>-</td>
+          <td>高度</td>
+        </tr>
+        <tr>
+          <td>stars</td>
+          <td>Array</td>
+          <td>[]</td>
+          <td>[{img: imgUrl },{ img:imgUrl }]</td>
+          <td>环绕渲染数据</td>
+        </tr>
+    </tbody>
+</table>
 </div>
  
 </template>
@@ -33,37 +81,37 @@ export default {
 
         starList:[
           {
-            img:require('../img/character1.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character2.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character3.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character4.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character5.png')
+            img:require('../img/character.png')
           }
         ],
         `,
         starList:[
           {
-            img:require('../img/character1.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character2.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character3.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character4.png')
+            img:require('../img/character.png')
           },
            {
-            img:require('../img/character5.png')
+            img:require('../img/character.png')
           }
         ],
       }
